@@ -28,7 +28,7 @@ const[isPlaying,setIsPlaying]=useState(false)
       <p>Use arrows</p>
       <p className="text-red-400">Score:<span className="text-red-400">{score}</span></p>
 
-    <div className="re;ative bg-grey-700 border-4 border-yellow-500 shadow-2x1" 
+     <div className="relative bg-grey-700 border-4 border-yellow-500 shadow-2x1" 
          style={{
       width:GRID_SIZE*CELL_SIZE,
       height:GRID_SIZE*CELL_SIZE
@@ -40,20 +40,18 @@ const[isPlaying,setIsPlaying]=useState(false)
       style={{
         width:CELL_SIZE-2,
         height:CELL_SIZE-2,
-        left:segment.x*CELL_SIZE+175,
+        left:segment.x*CELL_SIZE+1,
         top:segment.y*CELL_SIZE+1
-      }}></div> 
-    ))}
+      }}/>
+        ))}
          <div className="absolute bg-red-500 rounded-full"
     style={{
       width:CELL_SIZE-4,
       height:CELL_SIZE-4,
       top: apple.x*CELL_SIZE+2,
-      left:apple.y*CELL_SIZE+585
-    }}>
+      left:apple.y*CELL_SIZE+2
+    }}/>
     </div>
-    </div>
-    
     </div>
   )
 }
