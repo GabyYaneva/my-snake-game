@@ -10,10 +10,10 @@ export default function App() {
 
     const [score, setScore] = useState(0);
     const [applePosition, setApplePosition] = useState(() => generateRandomApple(GRID_SIZE));
-    const [snakeBody, setSnakeBody] = useState([{ x: 10, y: 10 }]); // Start with head at center
+    const [snakeBody, setSnakeBody] = useState([{ x: 10, y: 10 }]);
 
     return(
-        <div className="min-h-screen bg-blue-800 flex flex-col items-center justify-center p-4">
+        <div className="min-h-screen bg-gray-800 flex flex-col items-center justify-center p-4">
 <h1 className="text-5xl font-bold text-amber-300 drop-shadow-lg">
     🐍Snake🐍</h1>
     <p className="text-2xl text-amber-200 mt-6">
