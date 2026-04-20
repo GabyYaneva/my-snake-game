@@ -1,1 +1,1 @@
-create snake 
+export default function Snake({}){}
