@@ -3,15 +3,15 @@
 
     return (
         <div
-            className="absolute text-2xl flex justify-center"
+            className="absolute text-2xl flex justify-center bg-red-700 rounded-full"
             style={{
                 left: x * cellSize + 2,
                 top: y * cellSize + 2,
-                width: cellSize - 4,
-                height: cellSize - 4
+                width: cellSize - 6,
+                height: cellSize - 6
             }}
         >
-            🍎
+           
         </div>
     );
 }
