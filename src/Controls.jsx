@@ -1,0 +1,1 @@
+controls for screenLeft,right,down ,up
