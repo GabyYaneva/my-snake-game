@@ -52,8 +52,8 @@ dirrctionRef.current=direction;
                 return currentSnake;
             }
 
-            if(res.applePosition!==applePosition){
-                setApplePosition(res.applePosition);
+            if(res.currApple!==applePosition){
+                setApplePosition(res.currApple);
             }
 
             if(res.score!==score){

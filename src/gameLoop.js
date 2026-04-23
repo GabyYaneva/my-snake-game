@@ -1,7 +1,7 @@
 import { generateRandomApple } from "./components/Apple";
 
 export function isOutOfBounds(head,gridSize){
-    return head.x<0||head.x<=gridSize||
+    return head.x<0||head.x>=gridSize||
     head.y<0||head.y>=gridSize;
 }
 
