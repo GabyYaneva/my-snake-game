@@ -19,7 +19,7 @@
 export function generateRandomApple(gridSize, snakeBody = []){
     let newPosition;
     let attempts = 0;
-    const maxAttempts = 100;
+    const maxAttempts = 1000;
 
     do {
         newPosition = {
@@ -33,10 +33,4 @@ export function generateRandomApple(gridSize, snakeBody = []){
     );
 
     return newPosition;
-}
-
-export function handleAppleEaten(setScore, gridSize, snakeBody) {
-    setScore(prevScore => prevScore + 10);
-
-    return generateRandomApple(gridSize, snakeBody);
 }

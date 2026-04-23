@@ -12,17 +12,11 @@ export default function Snake({ snakeBody, cellSize }){
                     style={{
                         left: segment.x * cellSize + 2,
                         top: segment.y * cellSize + 2,
-                        width: cellSize - 8,
-                        height: cellSize +8,
+                        width: cellSize - 4,
+                        height: cellSize -4,
                     }}
                 />
             ))}
         </>
     );
-}
-
-export function growSnake(snakeBody) {
-    if (snakeBody.length === 0) return snakeBody;
-    const tail = snakeBody[snakeBody.length - 1];
-    return [...snakeBody, { ...tail }];
 }

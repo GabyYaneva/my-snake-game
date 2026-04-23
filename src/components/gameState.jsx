@@ -15,22 +15,17 @@ export function useGameState() {
         setIsGameOver(false);
     };
 
-    const checkGameOver = (snakeHead, gridSize) => {
-        const { x, y } = snakeHead;
-        if (x < 0 || x >= gridSize || y < 0 || y >= gridSize) {
-            setIsPlaying(false);
-            setIsGameOver(true);
-            return true;
-        }
-        return false;
-    };
+    const forceGameOver=()=>{
+        setIsPlaying(false);
+        setIsGameOver(true);
+    }
 
     return {
-        isPlaying,
-        isGameOver,
-        play,
-        reset,
-        checkGameOver
+       isPlaying,
+       isGameOver,
+       play,
+       reset,
+       forceGameOver,
     };
 }
 

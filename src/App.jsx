@@ -1,55 +1,69 @@
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Board from "./components/Board"
 import Apple, { generateRandomApple } from "./components/Apple"
 import Snake from "./components/Snake"
 import Controls from "./components/Controls"
 import GameState, { useGameState } from "./components/gameState"
+import { runGame } from "./gameLoop";
 
 const GRID_SIZE = 20;
 const CELL_SIZE = 25;
+const INIT_SNAKE=[{x:10,y:10}];
+const INIT_DIRECTION={ x: 1, y: 0 };
 
 export default function App() {
 
     const [score, setScore] = useState(0);
-    const [applePosition, setApplePosition] = useState(() => generateRandomApple(GRID_SIZE));
-    const [snakeBody, setSnakeBody] = useState([{ x: 10, y: 10 }]);
-    const [direction, setDirection] = useState({ x: 1, y: 0 });
-    const { isPlaying, isGameOver, play, reset, checkGameOver } = useGameState();
+    const [applePosition, setApplePosition] = useState(() =>
+         generateRandomApple(GRID_SIZE,INIT_SNAKE));
+    const [snakeBody,setSnakeBody]=useState(INIT_SNAKE);
+    const[direction,setDirection]=useState(INIT_DIRECTION);
+    const { isPlaying,isGameOver,play,reset,forceGameOver} = useGameState();
+
+const dirrctionRef=useRef(direction);
+useEffect(()=>{
+dirrctionRef.current=direction;
+},[direction]
+);
 
     const resetGame = () => {
-        reset();
-        setScore(0);
-        setApplePosition(generateRandomApple(GRID_SIZE));
-        setSnakeBody([{ x: 10, y: 10 }]);
-        setDirection({ x: 1, y: 0 });
+       reset();
+       setScore(0);
+       setSnakeBody(INIT_SNAKE);
+       setDirection(INIT_DIRECTION);
+       dirrctionRef.current=INIT_DIRECTION;
+       setApplePosition(generateRandomApple(GRID_SIZE,INIT_SNAKE));
     };
 
-    const moveSnake = useCallback(() => {
-        setSnakeBody(currentSnake => {
-            const head = currentSnake[0];
-            const newHead = {
-                x: head.x + direction.x,
-                y: head.y + direction.y
-            };
+    const moveSnake = useCallback(()=>
+    {
+        setSnakeBody(currentSnake=>{
+            const currDirection=dirrctionRef.current;
+            const res=runGame(
+                currentSnake,
+                currDirection,
+                applePosition,
+                GRID_SIZE,
+                score
+            );
 
-            if (checkGameOver(newHead, GRID_SIZE)) {
-                return currentSnake; 
+            if(res.gameOver){
+                forceGameOver();
+                return currentSnake;
             }
 
-            let newSnake = [newHead, ...currentSnake];
-
-            const ateApple = newHead.x === applePosition.x && newHead.y === applePosition.y;
-
-            if (!ateApple) {
-                newSnake = newSnake.slice(0, -1);
-            } else {
-                setScore(prev => prev + 10);
-                setApplePosition(generateRandomApple(GRID_SIZE, newSnake));
+            if(res.applePosition!==applePosition){
+                setApplePosition(res.applePosition);
             }
 
-            return newSnake;
+            if(res.score!==score){
+                setScore(res.score);
+            }
+
+            return res.body;
         });
-    }, [direction, applePosition, checkGameOver]);
+    },[applePosition,score,forceGameOver]
+);
 
     useEffect(() => {
         if (isPlaying && !isGameOver) {
@@ -57,6 +71,7 @@ export default function App() {
             return () => clearInterval(gameInterval);
         }
     }, [moveSnake, isPlaying, isGameOver]);
+
 
     return(
         <div className="min-h-screen bg-gray-800 flex flex-col items-center justify-center p-4">
