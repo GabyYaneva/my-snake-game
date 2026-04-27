@@ -1,16 +1,35 @@
 # React + Vite
+My Snake Game 🐍
+🚧 Work in Progress (WIP)
+This project is currently under active development. I am working on refining the game logic, enhancing the user interface, and implementing advanced features to provide a smooth and engaging experience.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+📝 Project Overview
+This repository contains a modern implementation of the classic Snake Game. The goal of this project is to apply core software engineering principles—such as clean code, efficient memory management, and robust logic—to a familiar game format. It serves as a practical exploration of game loop mechanics, collision detection, and real-time state management.
 
-Currently, two official plugins are available:
+🛠️ Tech Stack (Under Development)
+Language: [Insert Language, e.g., Java / JavaScript / Kotlin]
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
+Graphics/UI: [Insert Framework, e.g., Swing / Canvas API]
 
-## React Compiler
+Architecture: Focus on modularity and separation of concerns.
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+🚀 Current Features
+Classic movement and growth mechanics.
 
-## Expanding the ESLint configuration
+Dynamic collision detection (walls and self).
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+Score tracking system.
+
+📅 Roadmap / Upcoming Features
+[ ] Levels & Difficulty: Increasing speed and obstacle patterns.
+
+[ ] Enhanced UI: Custom themes and animations.
+
+[ ] Sound Effects: Immersive audio feedback.
+
+[ ] Persistent High Scores: Local or cloud storage for best results.
+
+[ ] Mobile Optimization: (If applicable) touch controls for mobile browsers/devices.
+
+⚙️ Installation & Running
+Note: As the project is in progress, the setup instructions may change.
